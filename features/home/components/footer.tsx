@@ -34,7 +34,7 @@ export function Footer() {
 
         {/* Copyright Notice */}
         <p className="text-sm text-zinc-500 dark:text-zinc-400">
-          &copy; {new Date().getFullYear()} Codesnippet. All rights reserved.
+          &copy; {new Date().getFullYear()} CodeVerse. All rights reserved.
         </p>
       </div>
     </footer>
