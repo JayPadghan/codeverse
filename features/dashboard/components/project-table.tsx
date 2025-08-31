@@ -53,12 +53,17 @@ import {
 } from "lucide-react";
 import { toast } from "sonner";
 import { Project } from "../type";
+import { MarkedToggleButton } from "./toggle-star";
 
-interface ProjectTableProps{
-    projects: Project[];
-    onUpdateProject?:Function;
-    onDeleteProject?:Function;
-    onDuplicateProject?:Function;
+interface ProjectTableProps {
+  projects: Project[];
+  onUpdateProject?: (
+    id: string,
+    data: { title: string; description: string }
+  ) => Promise<void>;
+  onDeleteProject?: (id: string) => Promise<void>;
+  onDuplicateProject?: Function;
+  onMarkasFavorite?: Function;
 }
 
 interface EditProjectData {
@@ -70,7 +75,8 @@ export default function ProjectTable({
   projects, 
   onUpdateProject, 
   onDeleteProject, 
-  onDuplicateProject
+  onDuplicateProject,
+  onMarkasFavorite,
 }: ProjectTableProps) {
 
   const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
@@ -124,6 +130,21 @@ export default function ProjectTable({
         setIsLoading(false);
       }
     }
+
+    const handleMarkasFavorite = async (project: Project) => {
+    if (!onMarkasFavorite) return;
+
+    setIsLoading(true);
+    try {
+      await onMarkasFavorite(project.id);
+      toast.success("Project marked as favorite successfully");
+    } catch (error) {
+      toast.error("Failed to mark project as favorite");
+      console.error("Error marking project as favorite:", error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
     const copyProjectUrl = async (projectId: string) => {
       const url = `${window.location.origin}/playground/${projectId}`;
@@ -218,10 +239,10 @@ export default function ProjectTable({
                     </DropdownMenuTrigger>
                     <DropdownMenuContent align="end" className="w-48">
                       <DropdownMenuItem asChild>
-                        {/* <MarkedToggleButton
+                        <MarkedToggleButton
                           markedForRevision={project.Starmark[0]?.isMarked}
                           id={project.id}
-                        /> */}
+                        />
                       </DropdownMenuItem>
                       <DropdownMenuItem asChild>
                         <Link

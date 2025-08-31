@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Github as LucideGithub}  from "lucide-react";
+import { Linkedin } from 'lucide-react';
 import Image from "next/image";
 
 // interface ProjectLink {
@@ -14,9 +15,13 @@ import Image from "next/image";
 export function Footer() {
   const socialLinks = [
     {
-      href: "#",
+      href: "https://github.com/JayPadghan/codeverse",
       icon: <LucideGithub className="w-5 h-5 text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors" />,
     },
+    {
+      href: "https://www.linkedin.com/in/jay-padghan-189a272b1/",
+      icon: <Linkedin  className="w-5 h-5 text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors" width={20} height={20} />,
+    }
    
   ];
 
