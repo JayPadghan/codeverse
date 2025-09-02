@@ -94,16 +94,3 @@ Visit `http://localhost:3000` in your browser.
 | `Tab`                            | Accept AI suggestion    |
 
 ---
-
-## 📄 License
-
-This project is licensed under the **MIT License**.
-
-## 🙏 Acknowledgements
-
-A huge thanks to the creators and maintainers of these amazing open-source projects:
-* [Monaco Editor](https://microsoft.github.io/monaco-editor/)
-* [Ollama](https://ollama.com/) – for offline LLMs
-* [WebContainers](https://webcontainers.io/)
-* [xterm.js](https://xtermjs.org/)
-* [NextAuth.js](https://next-auth.js.org/)
